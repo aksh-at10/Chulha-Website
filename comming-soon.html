@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chulha — Future of Traditional Cooking</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=DM+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .container {
+      padding: 40px 24px;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards 0.2s;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(72px, 14vw, 140px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: #111111;
+      margin-bottom: 16px;
+    }
+
+    .tagline {
+      font-size: clamp(13px, 1.8vw, 16px);
+      font-weight: 600;
+      color: #111111;
+      letter-spacing: 0.14em;
+      text-indent: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #111111;
+      color: #ffffff;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-indent: 0.16em;
+      text-transform: uppercase;
+      padding: 10px 24px;
+      border-radius: 100px;
+      font-weight: 400;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Chulhã</h1>
+    <p class="tagline">Future of Traditional Cooking</p>
+    <span class="badge">Coming Soon</span>
+  </div>
+</body>
+</html>
