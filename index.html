@@ -3,71 +3,259 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Chulha — Future of Traditional Cooking</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=DM+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <title>Chulhã — Future of Traditional Cooking</title>
+  <!-- Caladea for brand name, Liberation Sans Bold for all other text -->
+  <link href="https://fonts.googleapis.com/css2?family=Caladea:wght@700&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --brown:  #3f2305;
+      --orange: #fc6e35;
+      --bg:     #ffffff;
+      --sans:   'Liberation Sans', Arial, sans-serif;  /* Liberation Sans, Arial is metrically identical */
+    }
 
     body {
       min-height: 100vh;
-      background: #ffffff;
+      background: var(--bg);
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      font-family: 'DM Sans', sans-serif;
+      font-family: var(--sans);
     }
 
+    /* ── wrapper ── */
     .container {
-      padding: 40px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 48px 24px 40px;
+      gap: 0;
       opacity: 0;
-      animation: fadeIn 1s ease forwards 0.2s;
+      animation: fadeUp 0.9s ease forwards 0.15s;
     }
 
+    /* ── logo ── */
+    .logo {
+      width: min(220px, 48vw);
+      height: auto;
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    /* ── brand name — Caladea ── */
     h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(72px, 14vw, 140px);
-      font-weight: 900;
-      letter-spacing: -0.03em;
+      font-family: 'Caladea', Georgia, serif;
+      font-size: clamp(64px, 13vw, 128px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
       line-height: 1;
-      color: #111111;
-      margin-bottom: 16px;
+      color: var(--brown);
+      margin-bottom: 14px;
     }
 
+    /* ── tagline — Liberation Sans Bold ── */
     .tagline {
-      font-size: clamp(13px, 1.8vw, 16px);
-      font-weight: 600;
-      color: #111111;
-      letter-spacing: 0.14em;
-      text-indent: 0.14em;
+      font-family: var(--sans);
+      font-size: clamp(11px, 1.5vw, 13px);
+      font-weight: 700;
+      color: var(--brown);
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      margin-bottom: 40px;
+      opacity: 0.55;
+      margin-bottom: 48px;
     }
 
-    .badge {
-      display: inline-block;
-      background: #111111;
-      color: #ffffff;
+    /* ── divider ── */
+    .divider {
+      width: 40px;
+      height: 2px;
+      background: var(--orange);
+      border-radius: 2px;
+      margin: 0 auto 48px;
+    }
+
+    /* ── contact row ── */
+    .contact-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(24px, 6vw, 64px);
+      flex-wrap: wrap;
+    }
+
+    /* ── email link — Liberation Sans Bold ── */
+    .email-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--brown);
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      opacity: 0.75;
+      transition: opacity 0.2s ease;
+    }
+    .email-link:hover { opacity: 1; }
+
+    .email-link .icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1.5px solid var(--brown);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .email-link:hover .icon {
+      background: var(--brown);
+      border-color: var(--brown);
+    }
+    .email-link:hover .icon svg path {
+      stroke: #ffffff;
+    }
+    .email-link .icon svg {
+      width: 16px;
+      height: 16px;
+    }
+    .email-link .icon svg path {
+      stroke: var(--brown);
+      transition: stroke 0.2s ease;
+    }
+
+    .email-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+    }
+    .email-label {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .email-address {
       font-size: 11px;
-      letter-spacing: 0.16em;
-      text-indent: 0.16em;
-      text-transform: uppercase;
-      padding: 10px 24px;
-      border-radius: 100px;
       font-weight: 400;
+      opacity: 0.6;
+      letter-spacing: 0.01em;
+    }
+    .calendly-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 13px 26px;
+      background: var(--orange);
+      color: #ffffff;
+      text-decoration: none;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 100px;
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+    .calendly-btn:hover {
+      background: #e05520;
+      transform: translateY(-1px);
+    }
+    .calendly-btn svg {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(12px); }
+    /* ── animation ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
       to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── responsive ── */
+    @media (max-width: 480px) {
+      .contact-row { flex-direction: column; gap: 20px; }
     }
   </style>
 </head>
 <body>
   <div class="container">
+
+    <!-- Logo -->
+    <img class="logo" src="White-bg.svg" alt="Chulhã logo" />
+
+    <!-- Brand name — colour from logo text (#3f2305) -->
     <h1>Chulhã</h1>
+
+    <!-- Tagline -->
     <p class="tagline">Future of Traditional Cooking</p>
-    <span class="badge">Coming Soon</span>
+
+    <!-- Orange accent rule -->
+    <div class="divider"></div>
+
+    <!-- Contact row -->
+    <div class="contact-row">
+
+      <!-- Email — left -->
+      <a class="email-link" id="email-link" href="mailto:contact@chulha.store" title="Send us a mail">
+        <span class="icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"
+                  stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M22 6l-10 7L2 6"
+                  stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="email-text">
+          <span class="email-label">Write to Us</span>
+          <span class="email-address">contact@chulha.store</span>
+        </span>
+      </a>
+
+      <!-- Calendly — right -->
+      <a class="calendly-btn"
+         href="https://calendly.com/akshat-chulha/30min"
+         target="_blank"
+         rel="noopener noreferrer">
+        <!-- Calendar icon -->
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="3" y="4" width="18" height="18" rx="2"
+                stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M16 2v4M8 2v4M3 10h18"
+                stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Schedule a Meeting
+      </a>
+
+    </div>
   </div>
+
+  <script>
+    function setEmailHref() {
+      const link = document.getElementById('email-link');
+      const isPortrait = window.innerWidth / window.innerHeight < 1;
+
+      if (isPortrait) {
+        // Mobile / portrait → Gmail compose link (opens in browser or app)
+        link.href   = 'https://mail.google.com/mail/?view=cm&to=contact@chulha.store';
+        link.target = '_blank';
+        link.rel    = 'noopener noreferrer';
+      } else {
+        // Desktop / landscape → mailto (triggers default mail client)
+        link.href   = 'mailto:contact@chulha.store';
+        link.removeAttribute('target');
+        link.removeAttribute('rel');
+      }
+    }
+
+    setEmailHref();
+    window.addEventListener('resize', setEmailHref);
+  </script>
 </body>
 </html>
